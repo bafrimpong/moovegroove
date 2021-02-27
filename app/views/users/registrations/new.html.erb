@@ -1,0 +1,62 @@
+
+  <title>Moove & Groove :: Sign-up</title>
+    
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {class: "form-signin"} ) do |f| %>
+
+      <!-- for error messages -->
+      <%= render "users/shared/error_messages", resource: resource %>
+
+      <h1 class="h3 mb-3 font-weight-normal">Please Sign-up here</h1>
+
+      <%= f.label :first_name, class: "sr-only", for: "userFname" do %>First Name<% end %>
+      <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First name", required: true, id: "userFname", autofocus: true %>
+
+      <%= f.label :last_name, class: "sr-only", for: "userLname" do %>Last Name<% end %>
+      <%= f.text_field :last_name, class: "form-control", placeholder: "Last name", required: true, id: "userLname" %>
+
+      <%= f.label :email, class: "sr-only", for: "userEmail" do %>E-mail<% end %>
+      <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "E-mail address", required: true, id: "userEmail" %>
+
+      <!-- <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
+
+      <%= f.label :password, class: "sr-only", for: "userPassword" do %>Password<% end %>
+        <% if @minimum_password_length %>
+        <em class="text-danger" style="text-align: left;">(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password", required: true, id: "userPassword" %>
+
+      <%= f.label :password_confirmation, class: "sr-only", for: "userConfirmPassword" do %>Confirm Password<% end %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password", required: true, id: "userConfirmPassword" %>
+
+      <%#= f.label :password %>
+      <%# if @minimum_password_length %>
+      <!-- <em>(<%#= @minimum_password_length %> characters minimum)</em> -->
+      <!-- <%# end %><br /> -->
+      <%#= f.password_field :password, autocomplete: "new-password" %>
+      <!-- <%#= f.label :password_confirmation %><br /> -->
+      <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      
+      <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
+
+      <%= render "users/shared/links" %>
+
+    <% end %>
+    
+    <!-- <form class="form-signin">
+      
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
+    </form> -->
+
+
+<!-- </html> -->

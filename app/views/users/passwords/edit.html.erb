@@ -1,0 +1,27 @@
+
+<title>Moove & Groove :: Change Password</title>
+    
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-signin" }) do |f| %>
+
+  <!-- for error messages -->
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <%= f.hidden_field :reset_password_token %>
+
+  <h1 class="h3 mb-3 font-weight-normal">Change Password</h1>
+<p class="text-danger"><em>Please change your password here</em></p>
+
+  <%= f.label :password, class: "sr-only", for: "userPassword" do %>New Password<% end %>
+    <% if @minimum_password_length %>
+      <em class="text-danger" style="text-align: left;">(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+  <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "New Password", required: true, id: "userPassword" %>
+
+  <%= f.label :password_confirmation, class: "sr-only", for: "userConfirmPassword" do %>Confirm Password<% end %>
+  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm new password", required: true, id: "userConfirmPassword" %>
+
+  <%= f.submit "Change Password", class: "btn btn-lg btn-primary btn-block" %>
+
+  <%= render "users/shared/links" %>
+
+<% end %>

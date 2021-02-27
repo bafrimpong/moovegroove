@@ -1,0 +1,21 @@
+
+<title>Moove & Groove :: Sign-in</title>
+    
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: "form-signin"} ) do |f| %>
+
+  <!-- for error messages -->
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <h1 class="h3 mb-3 font-weight-normal">Please Sign-in here</h1>
+
+  <%= f.label :email, class: "sr-only", for: "userEmail" do %>E-mail<% end %>
+  <%= f.email_field :email, class: "form-control", placeholder: "E-mail address", required: true, id: "userEmail" %>
+
+  <%= f.label :password, class: "sr-only", for: "userPassword" do %>Password<% end %>
+  <%= f.password_field :password, class: "form-control", placeholder: "Password", required: true, id: "userPassword" %>
+  
+  <%= f.submit "Sign-in", class: "btn btn-lg btn-primary btn-block" %>
+
+  <%= render "users/shared/links" %>
+
+<% end %>

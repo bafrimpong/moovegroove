@@ -1,0 +1,19 @@
+
+<title>Moove & Groove :: Password Reset Instructions</title>
+    
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "form-signin" }) do |f| %>
+
+  <!-- for error messages -->
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <h1 class="h3 mb-3 font-weight-normal">Forgot your password?</h1>
+  <p class="text-danger"><em>Send password reset instructions here</em></p>
+
+  <%= f.label :email, class: "sr-only", for: "userEmail" do %>E-mail<% end %>
+  <%= f.email_field :email, class: "form-control", required: true, id: "userEmail" %>
+  
+  <%= f.submit "Send Instructions", class: "btn btn-lg btn-primary btn-block" %>
+
+  <%= render "users/shared/links" %>
+
+<% end %>
