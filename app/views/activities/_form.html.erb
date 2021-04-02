@@ -1,4 +1,7 @@
-<%= form_with(model: activity, local: true) do |f| %>
+
+<%= form_with(model: activity, local: true, :html => {class: "form-signin", id: "activityForm"} ) do |f| %>
+
+  <!-- for error messages -->
   <% if activity.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
@@ -11,16 +14,45 @@
     </div>
   <% end %>
 
-  <label name="first_name" class="sr-only" for="username">Name</label>
+  <!-- <h5 class="h3 mb-3 font-weight-normal">Please enter activity details</h5> -->
+  <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
 
-  <%= f.label :name, :class => "sr-only", for: "activityName" do %>Activity Name<% end %>
-  <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Activity name", required: true, id: "activityName", autofocus: true %>
+    <div class="col-lg-3 col-md-3 col-sm-12 text-center">
+      
+      <% if activity.activity_photograph.try(:attached?) %>
+        <%= image_tag activity.activity_photograph, style: set_image_width_height(180, 185), class:"img-fluid img-thumbnail w-100", id:"activity-photo", alt: "activity photo" %>
+      <% else %>
+        <img class="img-fluid img-thumbnail w-100", style="width: 180px; height: 185px;" id="activity-photo" src="<%= asset_pack_path('media/images/no-photo.png') %>" alt="activity photo">
+      <% end %>
 
-  <%= f.label :description, class: "sr-only", for: "des" do %>Description<% end %>
-  <%= f.text_field :description, class: "form-control", placeholder: "Activity description", required: true, id: "des" %>
+      <%= f.file_field :activity_photograph, id: "activity-photo-file", accept: "image/png, image/jpg, image/jpeg", onchange: "previewPhotograph(this, 'activity-photo');" %>
+    
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
+    <div class="col-lg-9 col-md-9 col-sm-12">
+      
+      <%= f.label :name, class: "sr-only", for: "activityName" do %>Activity Name<% end %>
+      <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Activity name", required: true, id: "activityName" %>
+
+      <div style="margin: 15px 0;">
+        <%= f.label :description, class: "sr-only", for: "activityDesc" do %>Description<% end %>
+        <%= f.text_area :description, class: "form-control", placeholder: "Description", size: "15x5", required: true, id: "activityDesc" %>
+      </div>
+      
+      <%#= f.submit "Create Activity", class: "btn btn-lg btn-primary" %>
+      <button type="submit" id="createEditActivtyButton" class="btn btn-md btn-primary"><%= button_title %></button>
+      <% if show %>
+        <%= link_to 'Show', @activity, class: "btn btn-md btn-secondary" %>
+      <% end %>
+      <%= link_to 'Cancel', activities_path, class: "btn btn-md btn-default" %>
+
+    </div>
+
   </div>
-<% end %>
+  
 
+
+
+
+
+<% end %>

@@ -1,5 +1,12 @@
 <h1>New Activity</h1>
 
-<%= render 'form', activity: @activity %>
+<%= render 'form', activity: @activity, button_title: "Create Activity", show: false %>
+<%#= link_to 'Back', activities_path %>
 
-<%= link_to 'Back', activities_path %>
+<script>
+    $(document).ready(function(){
+
+        // validate that phoograph is uploaded
+        validatePhotoOnFormSubmit('activityForm', 'activity-photo-file');
+    })
+</script>

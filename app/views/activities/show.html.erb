@@ -1,4 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path %>
+<div class="row" style="margin: 30px 0;">
+
+    <div class="col-md-12">
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">Activity Details</strong>
+            <h3 class="mb-0"><%= @activity.try(:name).try(:upcase) %></h3>
+            <div class="mb-1 text-muted">Added on <%=@activity.try(:created_at).strftime('%Y-%m-%d') %> @ <%= @activity.try(:created_at).strftime('%H:%M:%S') %> </div>
+            <p class="mb-auto"><%= @activity.description %></p>
+            
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <%= link_to 'Edit', edit_activity_path(@activity) %> | <%= link_to 'Back', activities_path %>
+                </div>
+            </div>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+            <%= image_tag @activity.try(:activity_photograph), class:"bd-placeholder-img", style: set_image_width_height(200, 250) %>
+        </div>
+        </div>
+    </div>
+
+</div>
+
