@@ -14,10 +14,10 @@
     </tr>
   </thead>
   <tbody>
-    <% row_count = 0 %>
+    <% row_count = 1 %>
     <% @activities.each do |activity| %>
       <tr>
-        <th scope="row"><%= (row_count+1) %></th>
+        <th scope="row"><%= row_count %>.</th>
         <td><%= activity.name.try(:upcase) %></td>
         <% if activity.activity_photograph.try(:attached?) %>
           <td><%= image_tag activity.activity_photograph, style: set_image_width_height(50, 50) %></td>
@@ -29,6 +29,7 @@
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Delete', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% row_count += 1 %>
     <% end %>
   </tbody>
 </table>
