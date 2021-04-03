@@ -6,6 +6,7 @@
     <title>Moove & Groove! :: The Fitness Tracker</title>
 
     <%= stylesheet_link_tag 'landingpages' %>
+
 </head>
 
 <body>
@@ -20,25 +21,23 @@
                 <p>
                     
                     <% if current_user %>
-                        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, rel: "nofollow", :class => "btn btn-success btn-lg" %>
+                        <%= link_to "Sign-out", destroy_user_session_path, method: :delete, rel: "nofollow", :class => "btn btn-success btn-lg" %>
                         <%#=link_to 'Log Out', session_path, method: :delete%>
                         <!-- <a href="<%#= destroy_user_session_path %>" marked="1" rel="nofollow" data-method="delete">
 							Sign Out
 						</a> -->
                     <% else %>
-                        <a class="btn btn-primary btn-lg" href="<%= new_user_registration_url %>" role="button">Register &raquo;</a>
-                        <%= link_to "Log-in Now", new_user_session_path, :class => "btn btn-success btn-lg" %>
+                        <a class="btn btn-primary btn-lg" href="<%= new_user_registration_url %>" role="button">Create an Account &raquo;</a>
+                        <%= link_to "Sign-in", new_user_session_path, :class => "btn btn-secondary btn-lg" %>
                     <% end %>
 
-                    <%#= link_to "New Activity", new_activity_path %>
-                    
                 </p>
             </div>
         </div>
 
         <div class="container">
             <!-- Example row of columns -->
-           
+
             <div class="row">
                 <% @activities.each do | activity | %>
                     <div class="col-md-2">
@@ -70,12 +69,6 @@
         </div> <!-- /container -->
 
     </main>
-
-<!-- render footer -->
-<%#= render "layouts/partials/footer" %>
-
-
-    <%#= javascript_pack_tag 'application' %>
 
 </body>
 

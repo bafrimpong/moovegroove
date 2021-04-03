@@ -1,6 +1,8 @@
 class UserActivitiesController < ApplicationController
   before_action :set_user_activity, only: %i[ show edit update destroy ]
 
+  before_action :authenticate_user!
+
   # GET /user_activities or /user_activities.json
   def index
     @user_activities = UserActivity.all
@@ -22,7 +24,8 @@ class UserActivitiesController < ApplicationController
   # POST /user_activities or /user_activities.json
   def create
     @user_activity = UserActivity.new(user_activity_params)
-
+    @user_activity.user_id = current_user.try(:id)
+    
     respond_to do |format|
       if @user_activity.save
         format.html { redirect_to @user_activity, notice: "User activity was successfully created." }
@@ -64,6 +67,7 @@ class UserActivitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_activity_params
-      params.fetch(:user_activity, {})
+      # params.fetch(:user_activity, {})
+      params.require(:user_activity).permit(:user_id, :activity_id, :log_date, :duration, :log_comment)
     end
 end

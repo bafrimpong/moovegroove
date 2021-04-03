@@ -1,4 +1,5 @@
-<%= form_with(model: user_activity, local: true) do |form| %>
+<%= form_with(model: user_activity, local: true, :html => {class: "form-signin", id: "userActivityForm"} ) do |f| %>
+
   <% if user_activity.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user_activity.errors.count, "error") %> prohibited this user_activity from being saved:</h2>
@@ -11,7 +12,45 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
+
+    <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 15px;">
+      <%= f.label :activity_id, class: "sr-only1", for: "activityName" do %>Activity<% end %><br/>
+      <%= f.select(:activity_id, options_for_select(load_activities_for_selection), 
+                    {selected: false, :include_blank => false}, placeholder: "Activity name",
+                    class: "form-control") %>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <%= f.label :log_date, class: "sr-only1", for: "logDate" do %>Date<% end %><br/>
+      <%= f.date_field :log_date, autofocus: true, class: "form-control", placeholder: "Date", required: true, id: "logDate" %>
+    </div>
+
+    <div class="col-lg-8 col-md-8 col-sm-12">
+      <%= f.label :duration, class: "sr-only1", for: "logDuration" do %>Duration<% end %><br/>
+      <%= f.time_select :duration, {include_seconds: true, 
+        prompt: { hour: 'Choose hour', minute: 'Choose minute', second: 'Choose seconds' }}, 
+        {class: "form-control", placeholder: "Duration", required: true, id: "logDuration", style: "width: 25%; display: inline;" } %>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div style="margin: 15px 0;">
+        <%= f.label :log_comment, class: "sr-only1", for: "logComment" do %>Comment<% end %><br/>
+        <%= f.text_area :log_comment, class: "form-control", placeholder: "Comment", size: "15x5", required: true, id: "logComment" %>
+      </div>
+    </div>
+    
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <button type="submit" id="createEditUserActivtyButton" class="btn btn-md btn-primary"><%= button_title %></button>
+      
+      <% if show %>
+        <%= link_to 'Show', @user_activity, class: "btn btn-md btn-secondary" %>
+      <% end %>
+
+      <%= link_to 'Cancel', user_activities_path, class: "btn btn-md btn-default" %>
+    </div>
+
   </div>
+
 <% end %>
+

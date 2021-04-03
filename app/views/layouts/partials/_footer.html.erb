@@ -1,3 +1,59 @@
-<footer class="containers">
+<!-- <footer class="containers">
     <p>&copy; Moove and Groove 2021</p>
-</footer>
+</footer> -->
+
+<!-- Footer -->
+<section id="footer" >
+    <div class="container">
+        <div class="row text-center text-xs-center text-sm-left text-md-left">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>Moove & Groove</h5>
+                <ul class="list-unstyled quick-links">
+                    <li><a href="<%= root_path %>"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                    <li><a href="#"><i class="fa fa-angle-double-right"></i>About Us</a></li>
+                    <% if current_user %>
+                    <li><a href="<%= new_user_session_path %>"><i class="fa fa-angle-double-right"></i>Sign-in</a></li>
+                    <% else %>
+                    <li><a href="<%= new_user_session_path %>"><i class="fa fa-angle-double-right"></i>Sign-in</a></li>
+                    <li><a href="<%= new_user_registration_path %>"><i class="fa fa-angle-double-right"></i>Sign-up</a></li>
+                    <% end %>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>Activities</h5>
+                <ul class="list-unstyled quick-links">
+                    <li><a href="<%= new_activity_path %>"><i class="fa fa-angle-double-right"></i>Create</a></li>
+                    <li><a href="<%= activities_path %>"><i class="fa fa-angle-double-right"></i>View All</a></li>
+                    <!-- <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li> -->
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>User Activities</h5>
+                <ul class="list-unstyled quick-links">
+                    <li><a href="<%= new_user_activity_path %>"><i class="fa fa-angle-double-right"></i>Create</a></li>
+                    <li><a href="<%= user_activities_path %>"><i class="fa fa-angle-double-right"></i>View All</a></li>
+                    <!-- <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <ul class="list-unstyled list-inline social text-center">
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                </ul>
+            </div>
+            <hr>
+        </div>	
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                <p class="h6">© All right Reversed.<a class="text-green ml-2" href="<%= root_path %>" target="_blank">Moove & Groove</a></p>
+            </div>
+            <hr>
+        </div>	
+    </div>
+</section>
+<!-- ./Footer -->

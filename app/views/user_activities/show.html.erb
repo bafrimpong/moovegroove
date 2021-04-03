@@ -1,4 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_user_activity_path(@user_activity) %> |
-<%= link_to 'Back', user_activities_path %>
+<div class="row" style="margin: 30px 0;">
+
+    <div class="col-md-12">
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">User activity details for</strong>
+            <h3 class="mb-0"><%= @user_activity.activity.try(:name).try(:upcase) %></h3>
+            <div style="margin-left: 20px;">
+                <div class="mb-1 text-muted">
+                    Logged Date <%= @user_activity.try(:log_date).strftime('%Y-%m-%d') %>
+                </div>
+                <div class="mb-1 text-muted">
+                    Duration <%= @user_activity.try(:duration).strftime('%H:%M:%S') %> 
+                </div>
+            </div>
+            <p class="mb-auto"><%= @user_activity.log_comment %></p>
+            
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <%= link_to 'Edit', edit_user_activity_path(@user_activity) %> | <%= link_to 'Back', user_activities_path %>
+                </div>
+            </div>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+            <%= image_tag @user_activity.activity.try(:activity_photograph), class:"bd-placeholder-img", style: set_image_width_height(200, 250) %>
+        </div>
+        </div>
+    </div>
+
+</div>
+

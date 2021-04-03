@@ -1,11 +1,9 @@
 class ApplicationController < ActionController::Base
-    helper_method :godwin, :who_is_godwin
 
-    def who_is_godwin
-        puts "Godwin is a student"
-    end
-
-    def godwin  
-       "He is a student"
-    end
+    private
+        def authenticate_user!
+            if current_user.nil?
+                redirect_to new_user_session_path
+            end
+        end
 end
